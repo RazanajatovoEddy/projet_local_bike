@@ -1,0 +1,101 @@
+vversion: 2
+
+models:
+    - name: stg_local_bike__brands
+      description: "liste les marques des velos"
+      docs:
+        show: true
+      columns:
+          - name: brand_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null          
+
+    - name: stg_local_bike__categories
+      description: "liste les catégories des velos"
+      docs:
+        show: true
+      columns:
+          - name: category_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__customers
+      description: "liste les clients"
+      docs:
+        show: true
+      columns:
+          - name: customer_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__orders
+      description: "liste les commandes"
+      docs:
+        show: true
+      columns:
+          - name: order_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__order_items
+      description: "liste les lignes de commande"
+      docs:
+        show: true
+      columns:
+          - name: order_item_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__products
+      description: "liste les lignes de commande"
+      docs:
+        show: true
+      columns:
+          - name: product_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__staffs
+      description: "liste les équipes vendeurs et managers"
+      docs:
+        show: true
+      columns:
+          - name: staff_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__stocks
+      description: "liste les stocks"
+      docs:
+        show: true
+      columns:
+          - name: stock_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_local_bike__stores
+      description: "liste les magasins"
+      docs:
+        show: true
+      columns:
+          - name: stock_id
+            description: "la clé primaire"
+            tests:
+                - unique
+                - not_null
