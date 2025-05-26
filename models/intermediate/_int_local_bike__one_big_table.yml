@@ -1,23 +1,23 @@
 version: 2
 
 models:
-  - name: mrt_local_bike__one_big_table
-    description: "A wide table model that consolidates  complete order-related information including customer, product, store, staff, and manager details."
+  - name: int_local_bike__one_big_table
+    description: "A denormalized model combining all relevant order data including customers, products, stores, staff, and management. "
     docs:
       show: true
     columns:
       - name: order_id
-        description: "Unique identifier of the order."
+        description: "Unique identifier for the order."
       - name: order_status
         description: "Status of the order."
       - name: order_date
-        description: "Date the order was placed."
+        description: "Date when the order was placed."
       - name: store_id
         description: "Unique identifier of the store."
       - name: store_name
-        description: "Name of the store."
+        description: "Name of the store where the order was placed."
       - name: store_city
-        description: "City where the store is located."
+        description: "City of the store."
       - name: customer_id
         description: "Unique identifier of the customer."
       - name: customer_first_name
@@ -29,11 +29,11 @@ models:
       - name: customer_email
         description: "Customer's email address."
       - name: customer_city
-        description: "City where the customer resides."
+        description: "Customer's city."
       - name: customer_state
-        description: "State or region of the customer."
+        description: "Customer's state or region."
       - name: customer_zip_code
-        description: "Customer's ZIP or postal code."
+        description: "Customer's postal code."
       - name: product_id
         description: "Unique identifier of the product."
       - name: product_name
@@ -49,17 +49,17 @@ models:
       - name: order_item_discount
         description: "Discount applied to the order item."
       - name: order_item_total_price
-        description: "Total price after discount."
+        description: "Total price of the order item after discount."
       - name: brand_id
-        description: "Brand identifier of the product."
+        description: "Identifier of the product brand."
       - name: brand_name
-        description: "Brand name of the product."
+        description: "Name of the product brand."
       - name: category_id
-        description: "Category identifier of the product."
+        description: "Identifier of the product category."
       - name: category_name
-        description: "Category name of the product."
+        description: "Name of the product category."
       - name: staff_id
-        description: "Identifier of the staff member who handled the order."
+        description: "Identifier of the staff member who handled the sale."
       - name: staff_first_name
         description: "First name of the staff member."
       - name: staff_last_name
@@ -72,7 +72,7 @@ models:
         description: "Last name of the manager."
     meta:
       maturity: medium
-    tags: ["orders", "wide_table"]
+    tags: ["orders", "wide_table", "customer", "product", "sales"]
     config:
-      materialized: table
-    description: "{{ doc('mrt_local_bike__one_big_table') }}"
+      materialized: view
+    description: "{{ doc('int_local_bike__one_big_table') }}"

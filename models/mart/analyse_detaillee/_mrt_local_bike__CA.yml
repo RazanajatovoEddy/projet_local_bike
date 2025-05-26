@@ -2,4 +2,35 @@ version: 2
 
 models:
   - name: mrt_local_bike__CA
-    description: '{{ doc("mrt_local_bike__CA") }}'
+    description: "Aggregated model providing daily  order metrics by store, staff, and manager."
+    docs:
+      show: true
+    columns:
+      - name: order_date
+        description: "Date when the orders were placed."
+      - name: store_id
+        description: "Unique identifier of the store."
+      - name: store_name
+        description: "Name of the store (aggregated via MAX)."
+      - name: store_city
+        description: "City of the store (aggregated via MAX)."
+      - name: staff_id
+        description: "Identifier of the staff member."
+      - name: staff_name
+        description: "Full name of the staff member (aggregated via MAX of concatenated first and last name)."
+      - name: manager_id
+        description: "Identifier of the staff member's manager."
+      - name: manager_first_name
+        description: "Full name of the manager (aggregated via MAX of concatenated first and last name)."
+      - name: order_item_total_price
+        description: "Total revenue (sum of order item prices) for the given group."
+      - name: order_count
+        description: "Total number of unique orders in the group."
+      - name: order_average_basket
+        description: "Average basket size: total revenue divided by the number of orders."
+    meta:
+      maturity: medium
+    tags: ["orders", "aggregation", "staff_performance"]
+    config:
+      materialized: table
+    description: "{{ doc('mrt_local_bike__CA') }}"
