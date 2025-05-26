@@ -94,7 +94,7 @@ models:
       docs:
         show: true
       columns:
-          - name: stock_id
+          - name: store_id
             description: "la clé primaire"
             tests:
                 - unique
