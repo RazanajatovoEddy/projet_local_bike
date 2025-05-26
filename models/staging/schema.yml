@@ -1,101 +1,129 @@
-vversion: 2
+version: 2
 
 models:
     - name: stg_local_bike__brands
-      description: "liste les marques des velos"
+      description: "This model contains information about brands"
       docs:
         show: true
       columns:
           - name: brand_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each brand"
             tests:
                 - unique
                 - not_null          
 
     - name: stg_local_bike__categories
-      description: "liste les catégories des velos"
+      description: "This model contains information about categories"
       docs:
         show: true
       columns:
           - name: category_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each category"
             tests:
                 - unique
                 - not_null
 
     - name: stg_local_bike__customers
-      description: "liste les clients"
+      description: "This model contains information about customers"
       docs:
         show: true
       columns:
           - name: customer_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each customer"
             tests:
                 - unique
                 - not_null
 
     - name: stg_local_bike__orders
-      description: "liste les commandes"
+      description: "This model contains information about orders"
       docs:
         show: true
       columns:
           - name: order_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each order"
             tests:
                 - unique
                 - not_null
+          - name: store_id
+            description: "Foreign key linking the order to the corresponding store."
+            tests:
+              - relationships:
+                  name: store_id_foreign_key_in_stg_local_bike__stores
+                  to: ref('stg_local_bike__stores')
+                  field: store_id
+          - name: staff_id
+            description: "Foreign key linking the order to the corresponding staff."
+            tests:
+              - relationships:
+                  name: staff_id_foreign_key_in_stg_local_bike__staffs
+                  to: ref('stg_local_bike__staffs')
+                  field: staff_id  
 
     - name: stg_local_bike__order_items
-      description: "liste les lignes de commande"
+      description: "This model contains information about each item included in a order"
       docs:
         show: true
       columns:
           - name: order_item_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each order item"
             tests:
                 - unique
                 - not_null
+          - name: order_id
+            description: "Foreign key linking the order item to the corresponding order."
+            tests:
+              - relationships:
+                  name: order_id_foreign_key_in_dans_stg_local_bike__orders
+                  to: ref('stg_local_bike__orders')
+                  field: order_id
 
     - name: stg_local_bike__products
-      description: "liste les lignes de commande"
+      description: "This model contains information about products"
       docs:
         show: true
       columns:
           - name: product_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each product"
             tests:
                 - unique
                 - not_null
 
     - name: stg_local_bike__staffs
-      description: "liste les équipes vendeurs et managers"
+      description: "This model contains information about staffs"
       docs:
         show: true
       columns:
           - name: staff_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each staff"
             tests:
                 - unique
                 - not_null
 
     - name: stg_local_bike__stocks
-      description: "liste les stocks"
+      description: "This model contains information about stocks of product"
       docs:
         show: true
       columns:
           - name: stock_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each stock of product"
             tests:
                 - unique
                 - not_null
+          - name: product_id
+            description: "Foreign key linking the stock to the corresponding product."
+            tests:
+              - relationships:
+                  name: product_id_foreign_key_in_stg_local_bike__products
+                  to: ref('stg_local_bike__products')
+                  field: product_id
 
     - name: stg_local_bike__stores
-      description: "liste les magasins"
+      description: "This model contains information about stores"
       docs:
         show: true
       columns:
           - name: store_id
-            description: "la clé primaire"
+            description: "Primary key, unique identifier for each store"
             tests:
                 - unique
                 - not_null
