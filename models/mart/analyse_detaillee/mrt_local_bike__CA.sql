@@ -1,5 +1,5 @@
 SELECT
-  --order
+  --order 
   order_date AS order_date,
   --store
   store_id AS store_id,
